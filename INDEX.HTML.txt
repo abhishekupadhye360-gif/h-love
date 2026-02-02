@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Harshu, I Love You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.container {
+  background: white;
+  padding: 35px 25px;
+  border-radius: 25px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: popIn 0.8s ease;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+img { width: 190px; }
+
+h1 {
+  font-size: 26px;
+  color: #ff4d6d;
+  margin-bottom: 20px;
+}
+
+p { color: #555; margin-bottom: 25px; }
+
+.btn-container {
+  position: relative;
+  height: 60px;
+}
+
+button {
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+#yes {
+  background: linear-gradient(135deg, #ff4d6d, #ff758c);
+  color: white;
+}
+
+#yes:hover { transform: scale(1.1); }
+
+#no {
+  background: #eee;
+  position: absolute;
+}
+
+#message {
+  display: none;
+  margin-top: 25px;
+  font-size: 22px;
+  color: #ff4d6d;
+}
+
+#final {
+  display: none;
+  text-align: center;
+  color: white;
+}
+
+#final h1 { font-size: 32px; }
+
+#final p {
+  font-size: 18px;
+  max-width: 300px;
+  margin: auto;
+}
+
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 5s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC (WORKING) -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container" id="card">
+  <img src="https://media.tenor.com/8mcG7QYjK3AAAAAi/bear-love.gif">
+
+  <h1>Harshu, do you love me? 💖</h1>
+  <p>You make my world brighter every day mera Bachuu 🌸</p>
+
+  <div class="btn-container">
+    <button id="yes">Yes 💕</button>
+    <button id="no">No 🙈</button>
+  </div>
+
+  <div id="message">
+    I knew it, Harshu 😘💞  
+    You are lifeline betuu Mrs.HAU ❤️
+  </div>
+</div>
+
+<div id="final">
+  <h1>Harshu ❤️</h1>
+  <p>
+    From the moment you came to my life everythings changed bachuuu  
+    I don’t just love you…  
+    I choose you. Every day. Forever 💍❤️
+  </p>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const msg = document.getElementById("message");
+const card = document.getElementById("card");
+const final = document.getElementById("final");
+const music = document.getElementById("bgMusic");
+
+noBtn.addEventListener("mouseover", () => {
+  const x = Math.random() * 220 - 110;
+  const y = Math.random() * 120 - 60;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+yesBtn.addEventListener("click", () => {
+  music.volume = 0.4;
+  music.play();
+
+  msg.style.display = "block";
+  hearts();
+
+  setTimeout(() => {
+    card.style.display = "none";
+    final.style.display = "block";
+    hearts();
+  }, 3000);
+});
+
+function hearts() {
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }
+}
+</script>
+
+</body>
+</html>
